@@ -1,0 +1,28 @@
+public class Solution {
+    public int solve(ArrayList<Integer> A, int B) {
+        Map<Integer,Integer> mp=new HashMap<>();
+        mp.put(0,1);
+        int xr=0;
+        int c=0;
+        for(int i=0;i<A.size();i++){
+            xr=xr^A.get(i);
+            int x=xr^B;
+            if(mp.containsKey(x)){
+                c+=mp.get(x);
+            }
+            if(mp.containsKey(xr)){
+                mp.put(xr,mp.get(xr)+1);
+            }
+            else{
+                mp.put(xr,1);
+            }
+        }
+        return c;
+    }
+}
+
+
+Given an array of integers A and an integer B.
+
+Find the total number of subarrays having bitwise XOR of all elements equals to B.
+
